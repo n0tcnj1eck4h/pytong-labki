@@ -22,7 +22,7 @@ slownik = {
     20: 'dwadzieścia',
     30: 'trzydzieści',
     40: 'czterdzieści',
-    50: 'piędziesiąt',
+    50: 'pięćdziesiąt',
     60: 'sześćdziesiąt',
     70: 'siedemdziesiąt',
     80: 'osiemdziesiąt',
@@ -35,7 +35,7 @@ slownik = {
     600: 'sześćset',
     700: 'siedemset',
     800: 'osiemset',
-    900: 'dziewiętset'
+    900: 'dziewięćset'
 }
 
 odmiana = {
@@ -62,7 +62,10 @@ def przetlumacz(n):
     if n < 100:
         dziesitki = ((n % 100) // 10) * 10
         reszta = n % 10
-        return slownik.get(dziesitki) + ' ' + przetlumacz(reszta)
+        if reszta != 0:
+            return slownik.get(dziesitki) + ' ' + przetlumacz(reszta)
+        else:
+            return slownik.get(dziesitki)
 
     if n < 1000:
         setki = ((n % 1000) // 100) * 100
